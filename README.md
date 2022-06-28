@@ -11,6 +11,11 @@ The goal of this project is to monitor a octoPi server (OctoPi installation) and
 ## Installation
 
 ## Usage
+Export following env vars befor interacting with ansible
+```bash
+export ANSIBLE_USER=<username>
+export ANSIBLE_PASSWORD=<password>
+```
 
 
 ## TODOS
