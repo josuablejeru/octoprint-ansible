@@ -1,0 +1,14 @@
+---
+- name: Deploy Webservices
+  hosts: octoprint
+  become: True
+  roles:
+    - role: nleiva.grafana_agent
+      vars:
+        grafana_api_key: '{{ lookup("env", "GRAFANA_API_KEY") }}'
+        prometheus_user: 347322
+        loki_user: 172631
+        grafana_location_prometheus: eu-west-0
+        grafana_location_promtail: eu-west-0
+
+
