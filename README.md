@@ -1,11 +1,12 @@
 # Octoprint Ansible
 
-The goal of this project is to monitor a octoPi server (OctoPi installation) and to not install it.
+The goal of this project is to monitor a OctoPi server (OctoPi installation) and to not install it.
+It uses Grafana to export all Logs Octoprint, webcamd and Nginx produces as well as all metrics.
 
 
 ## Services it monitors
 - NGINX
-- Octopring
+- Octoprint
 - webcamd
 
 ## Installation
@@ -15,6 +16,7 @@ Export following env vars befor interacting with ansible
 ```bash
 export ANSIBLE_USER=<username>
 export ANSIBLE_PASSWORD=<password>
+export GRAFANA_API_KEY=<api-key>
 ```
 
 
@@ -22,3 +24,8 @@ export ANSIBLE_PASSWORD=<password>
 - [ ] Setup SSL for Nginx
 
 ## License
+MIT License
+
+## Acknowledgment
+This small Project is standing on the shoulder of giants, thank you all!
+- [ansible-role-grafana_agent](https://github.com/nleiva/ansible-role-grafana_agent)

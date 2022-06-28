@@ -10,5 +10,3 @@
         loki_user: 172631
         grafana_location_prometheus: eu-west-0
         grafana_location_promtail: eu-west-0
-
-
