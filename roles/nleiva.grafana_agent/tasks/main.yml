@@ -1,0 +1,54 @@
+---
+- name: Download Agent file
+  ansible.builtin.get_url:
+    url: "https://github.com/grafana/agent/releases/latest/download/agent-linux-{{ grafana_agent_type[ansible_architecture] }}.zip"
+    dest: "/tmp/agent-linux.zip"
+    mode: "0644"
+
+- name: Install unzip
+  ansible.builtin.package:
+    name: unzip
+    state: present
+  when: install_unzip|bool
+
+- name: Unarchive Agent
+  ansible.builtin.unarchive:
+    src: "/tmp/agent-linux.zip"
+    dest: "{{ agent_location }}"
+    remote_src: true
+    mode: "0755"
+
+- name: Create directory for Agent's config file
+  ansible.builtin.file:
+    state: directory
+    recurse: true
+    path: "{{ config_location }}"
+    mode: u=rwX,g=rX,o=rX
+
+- name: Create Agent's config file
+  ansible.builtin.template:
+    src: "{{ grafana_agent_config_template }}"
+    dest: "{{ config_location }}/agent-config.yaml"
+    mode: u=rw,g=r,o=r
+    force: true
+  notify: Reload Grafana agent service
+
+- name: Create Systemd service
+  block:
+    - name: Template the new service file for Grafana agent
+      ansible.builtin.template:
+        src: "{{ grafana_agent_systemd_template }}"
+        dest: "{{ systemd_service_folder }}/grafana-agent.service"
+        mode: "0644"
+      notify: Reload Grafana agent service
+
+    - name: Enable and start Grafana agent service
+      ansible.builtin.service:
+        name: grafana-agent
+        state: started
+        enabled: true
+
+- name: Install Promtail
+  ansible.builtin.include_tasks: "promtail.yml"
+  when:
+    - loki_user is defined
