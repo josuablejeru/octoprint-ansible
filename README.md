@@ -21,6 +21,7 @@ export GRAFANA_API_KEY=<api-key>
 
 
 ## TODOS
+- [ ] Configure Octoprint Logging configuration with Ansible (and symlinc to /var/log/)
 - [ ] Setup SSL for Nginx
 
 ## License
