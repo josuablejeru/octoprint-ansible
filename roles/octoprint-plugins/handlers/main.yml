@@ -1,0 +1,6 @@
+---
+- name: Reload Octoprint
+  service:
+    name: octoprint
+    state: restarted
+    daemon_reload: true

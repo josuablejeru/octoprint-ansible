@@ -1,0 +1,7 @@
+---
+- name: Install Plugins
+  hosts: octoprint
+  user: "{{ ansible_ssh_user }}"
+  become: True
+  roles:
+    - role: octoprint-plugins

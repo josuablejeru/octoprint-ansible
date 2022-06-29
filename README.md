@@ -19,6 +19,21 @@ export ANSIBLE_PASSWORD=<password>
 export GRAFANA_API_KEY=<api-key>
 ```
 
+## OctoPrint Plugins
+Ansible can installes a list of Plugins sepcified in `templates/requirements.txt`.
+Use the `plugins.yml` playbook to do so.
+
+- TouchUI
+- BLTouch
+- SimpleEmergencyStop
+- NavbarTemp
+- FloatingNavbar
+- Themeify
+- HeaterTimeout
+- PrintTimeGenius
+- BedLevelVisualizer
+- ArcWelderPlugin
+- FirmwareUpdater
 
 ## TODOS
 - [ ] Configure Octoprint Logging configuration with Ansible (and symlinc to /var/log/)

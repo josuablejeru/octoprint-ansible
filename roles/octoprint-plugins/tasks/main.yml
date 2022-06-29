@@ -1,0 +1,12 @@
+---
+- name: Upload requirements.txt for Octoprint Plugins
+  copy:
+    src: templates/requirements.txt
+    dest: "/home/{{ user }}/.octoprint"
+
+# TODO: interate better other the requirements.txt to see each install command executed
+- name: Install Octoprint Plugins
+  pip:
+    requirements: /home/{{ user }}/.octoprint/requirements.txt
+    executable: "/home/{{ user }}/oprint/bin/pip"
+  notify: Reload Octoprint
