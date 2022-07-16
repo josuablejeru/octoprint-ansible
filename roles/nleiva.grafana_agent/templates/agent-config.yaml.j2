@@ -1,15 +1,41 @@
 server:
   http_listen_port: 12345
-prometheus:
+  log_level: info
+
+metrics:
   wal_directory: /tmp/grafana-agent-wal
   global:
     scrape_interval: 15s
-  configs: null
+    remote_write:
+      - url: https://prometheus-{{ grafana_location_prometheus }}.grafana.net/api/prom/push
+        basic_auth:
+          username: {{ prometheus_user }}
+          password: {{ grafana_api_key }}
+  configs:
+    - name: default
+      scrape_configs:
+        - job_name: agent
+          static_configs:
+            - targets: ['127.0.0.1:12345']
+
+logs:
+  configs:
+  - name: default
+    positions:
+      filename: /tmp/positions.yaml
+    scrape_configs:
+      - job_name: varlogs
+        static_configs:
+          - targets: [localhost]
+            labels:
+              job: varlogs
+              __path__: /var/log/*log
+    clients:
+      - url: https://logs-prod-eu-west-0.grafana.net/loki/api/v1/push
+        basic_auth:
+          username: {{ loki_user }}
+          password: {{ grafana_api_key }}
+
 integrations:
   node_exporter:
     enabled: true
-  prometheus_remote_write:
-    - url: https://prometheus-{{ grafana_location_prometheus }}.grafana.net/api/prom/push
-      basic_auth:
-        username: "{{ prometheus_user }}"
-        password: {{ grafana_api_key }}
