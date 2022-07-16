@@ -12,10 +12,19 @@ It uses Grafana to export all Logs Octoprint, webcamd and Nginx produces as well
 ## Installation
 
 ## Usage
+Working with ssh-keys
+
+```bash
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub <YOUR_USER_NAME>@<IP_ADDRESS_OF_THE_SERVER>
+```
+
 Export following env vars befor interacting with ansible
 ```bash
 export ANSIBLE_USER=<username>
 export ANSIBLE_PASSWORD=<password>
+
+export LOKI_USER=<user-id>
+export PROMETHEUS_USER=<user-id>
 export GRAFANA_API_KEY=<api-key>
 ```
 
@@ -24,7 +33,6 @@ Ansible can installes a list of Plugins sepcified in `templates/requirements.txt
 Use the `plugins.yml` playbook to do so.
 
 - TouchUI
-- BLTouch
 - SimpleEmergencyStop
 - NavbarTemp
 - FloatingNavbar
@@ -37,7 +45,8 @@ Use the `plugins.yml` playbook to do so.
 
 ## TODOS
 - [ ] Configure Octoprint Logging configuration with Ansible (and symlinc to /var/log/)
-- [ ] Setup SSL for Nginx
+- [ ] Setup SSL for HAProxy
+- [ ] Get HAProxy Logs inside of Grafana
 
 ## License
 MIT License
