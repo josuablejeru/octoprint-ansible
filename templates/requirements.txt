@@ -1,5 +1,4 @@
 https://github.com/BillyBlaze/OctoPrint-TouchUI/archive/master.zip
-https://github.com/jneilliii/OctoPrint-BLTouch/archive/master.zip
 https://github.com/Sebclem/OctoPrint-SimpleEmergencyStop/archive/master.zip
 https://github.com/imrahil/OctoPrint-NavbarTemp/archive/master.zip
 https://github.com/jneilliii/OctoPrint-FloatingNavbar/archive/master.zip
