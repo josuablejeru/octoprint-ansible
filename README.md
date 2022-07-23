@@ -42,6 +42,7 @@ Use the `plugins.yml` playbook to do so.
 - BedLevelVisualizer
 - ArcWelderPlugin
 - FirmwareUpdater
+- OctoPrint-Prometheus-Exporter
 
 ## TODOS
 - [ ] Configure Octoprint Logging configuration with Ansible (and symlinc to /var/log/)
