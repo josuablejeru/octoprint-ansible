@@ -1,11 +1,11 @@
 # Octoprint Ansible
 
 The goal of this project is to monitor a OctoPi server (OctoPi installation) and to not install it.
-It uses Grafana to export all Logs Octoprint, webcamd and Nginx produces as well as all metrics.
+It uses Grafana Agent to export all Logs Octoprint, webcamd and HAProxy produces as well as all metrics.
 
 
 ## Services it monitors
-- NGINX
+- HAProxy
 - Octoprint
 - webcamd
 
@@ -45,9 +45,7 @@ Use the `plugins.yml` playbook to do so.
 - OctoPrint-Prometheus-Exporter
 
 ## TODOS
-- [ ] Configure Octoprint Logging configuration with Ansible (and symlinc to /var/log/)
 - [ ] Setup SSL for HAProxy
-- [ ] Get HAProxy Logs inside of Grafana
 
 ## License
 MIT License
