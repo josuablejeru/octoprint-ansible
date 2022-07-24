@@ -18,6 +18,15 @@ scrape_configs:
       hostname: {{ ansible_host }}
       __path__: /var/log/*.log
 
+- job_name: octoprint
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: var-logs
+      hostname: {{ ansible_host }}
+      __path__: /home/{{ ansible_ssh_user }}/.octoprint/logs/*.log
+
 - job_name: systemd-journal
   journal:
     max_age: 12h
