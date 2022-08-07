@@ -3,6 +3,10 @@
 The goal of this project is to monitor a OctoPi server (OctoPi installation) and to not install it.
 It uses Grafana Agent to export all Logs Octoprint, webcamd and HAProxy produces as well as all metrics.
 
+Some changes are specific for Octoprint in combination with a Ender 3v2 which uses [Jyers/Marlin](https://github.com/Jyers/Marlin)
+
+[Here](https://github.com/Jyers/Marlin/wiki/OctoPrint-Settings#error-handling) are the extra changes made.
+
 
 ## Services it monitors
 - HAProxy
@@ -43,6 +47,9 @@ Use the `plugins.yml` playbook to do so.
 - ArcWelderPlugin
 - FirmwareUpdater
 - OctoPrint-Prometheus-Exporter
+- OctoPrint-M73Progress
+- OctoPrint-DetailedProgress
+- OctoPrint-DisplayLayerProgress
 
 ## TODOS
 - [ ] Setup SSL for HAProxy
