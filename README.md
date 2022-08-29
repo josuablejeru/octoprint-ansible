@@ -1,15 +1,16 @@
 # Octoprint Ansible
 
-The goal of this project is to monitor a OctoPi server (OctoPi installation) and to not install it.
+The goal of this project is to monitor and manage a OctoPi server (OctoPi installation) and to not install it.
 It uses Grafana Agent to export all Logs Octoprint, webcamd and HAProxy produces as well as all metrics.
 
-Some changes are specific for Octoprint in combination with a Ender 3v2 which uses [Jyers/Marlin](https://github.com/Jyers/Marlin)
+Plugins can be also installed by the corresponding Ansible Runbook `plugins.yml`.
 
+Some changes are specific for Octoprint in combination with a Ender 3v2 which uses [Jyers/Marlin](https://github.com/Jyers/Marlin) Firmware.
 [Here](https://github.com/Jyers/Marlin/wiki/OctoPrint-Settings#error-handling) are the extra changes made.
 
+The OcotPi instance can be also remotly accessed by using tailscale, a Zero config VPN which works from anywhere, you can learn more about it on there [website](https://tailscale.com/)
 
 ## Services it monitors
-- HAProxy
 - Octoprint
 - webcamd
 
@@ -30,6 +31,7 @@ export ANSIBLE_PASSWORD=<password>
 export LOKI_USER=<user-id>
 export PROMETHEUS_USER=<user-id>
 export GRAFANA_API_KEY=<api-key>
+export TAILSCALE_AUTHKEY=<auth-key>
 ```
 
 ## OctoPrint Plugins
@@ -51,8 +53,12 @@ Use the `plugins.yml` playbook to do so.
 - OctoPrint-DetailedProgress
 - OctoPrint-DisplayLayerProgress
 
-## TODOS
-- [ ] Setup SSL for HAProxy
+## Access your Octopring Instance remotly
+
+This Role uses Tailscale as a free, fast and secure method to access you Raspberry PI over a VPN.
+
+
+Please visit the [documentation](https://tailscale.com/kb/1085/auth-keys/) to generate a Auth Key.
 
 ## License
 MIT License
