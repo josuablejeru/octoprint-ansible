@@ -11,3 +11,7 @@
         loki_user: '{{ lookup("env", "LOKI_USER") | int }}'
         grafana_location_prometheus: prod-01-eu-west-0
         grafana_location_promtail: eu-west-0
+
+    - role: artis3n.tailscale
+      vars:
+        tailscale_authkey: '{{ lookup("env", "TAILSCALE_AUTHKEY") }}'
